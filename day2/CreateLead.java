@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CreateLead {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriverManager.edgedriver().setup();
 		//to open the browser
 		EdgeDriver driver = new EdgeDriver();
@@ -54,6 +54,7 @@ public class CreateLead {
 		//Enter your email in the E-mail address Field using the locator of your choice
 		WebElement EmailAddress = driver.findElement(By.id("createLeadForm_primaryEmail"));
 		EmailAddress.sendKeys("22naveen94@gmail.com");
+		driver.findElement(By.id("createLeadForm_primaryPhoneNumber")).sendKeys("8012044074");
 		WebElement Source = driver.findElement(By.id("createLeadForm_dataSourceId"));
 		Select Emp = new Select(Source);
 		Emp.selectByVisibleText("Employee");
@@ -65,8 +66,8 @@ public class CreateLead {
 		own.selectByIndex(5);
 		
 		//Click on Create Button
-	//	WebElement CreateButton = driver.findElement(By.className("smallSubmit"));
-	//	CreateButton.click();
+	WebElement CreateButton = driver.findElement(By.className("smallSubmit"));
+	CreateButton.click();
 		
 		//Get the Title of Resulting Page. refer the video  using driver.getTitle()
 		System.out.println("The Title of this web Application is "+ driver.getTitle());
